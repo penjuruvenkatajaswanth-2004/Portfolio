@@ -1,293 +1,819 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Penjuru Venkata Jaswanth | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jashu · Python Full Stack Developer &amp; Data Analyst</title>
+  <meta name="description"
+    content="Portfolio of Penjuru Venkata Jaswanth (Jashu) - Python Full Stack Developer & Data Analyst. Building impactful web apps, AI models, and data solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Dancing+Script:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-theme="dark">
 
-<div id="progress-bar"></div>
+  <!-- Background Canvas: Stars + Particles + Code -->
+  <canvas id="bgParticlesCanvas"></canvas>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-logo">PVJ</span>
-  <ul class="nav-links">
-    <li><a href="#" data-page="home" class="active">Home</a></li>
-    <li><a href="#" data-page="education">Education</a></li>
-    <li><a href="#" data-page="projects">Projects</a></li>
-  </ul>
-  <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
-    <span class="theme-icon moon">🌙</span>
-    <span class="theme-icon sun">☀️</span>
-  </button>
-</nav>
+  <!-- Ambient Glow Blobs -->
+  <div class="ambient-glow glow-1" id="glow1"></div>
+  <div class="ambient-glow glow-2" id="glow2"></div>
+  <div class="ambient-glow glow-3" id="glow3"></div>
 
-<!-- HOME -->
-<section id="home" class="page-section active-page">
-  <div class="home-photo-col">
-    <div class="photo-frame">
-      <div class="photo-ring ring-1"></div>
-      <div class="photo-ring ring-2"></div>
-      <img src="profile.jpg" alt="Penjuru Venkata Jaswanth" class="photo-img">
-      <div class="photo-dots">
-        <span></span> <span></span> <span></span> <span></span> <span></span>
-      </div>
+  <!-- Scroll Progress -->
+  <div id="progress-bar"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <span class="logo-text-name">Jaswanth</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-item active" data-nav="home">Home</a></li>
+      <li><a href="#about" class="nav-item" data-nav="about">About</a></li>
+      <li><a href="#skills" class="nav-item" data-nav="skills">Skills</a></li>
+      <li><a href="#projects" class="nav-item" data-nav="projects">Projects</a></li>
+      <li><a href="#experience" class="nav-item" data-nav="experience">Experience</a></li>
+      <li><a href="#certifications" class="nav-item" data-nav="certifications">Certifications</a></li>
+      <li><a href="#contact" class="nav-item" data-nav="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <span class="moon-icon">🌙</span>
+        <span class="sun-icon">☀️</span>
+      </button>
+      <a href="resume.pdf" target="_blank" download="Penjuru_Venkata_Jaswanth_Resume.pdf" class="nav-resume-btn">Resume</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
+  </nav>
 
-  <div class="home-content">
-    <p class="home-eyebrow">hello world <span>👋</span> — available for opportunities</p>
-    
-    <div class="hero-name-section">
-      <h1 class="hero-name">Penjuru Venkata</h1>
-      <h1 class="hero-name"><span class="highlight">Jaswanth</span></h1>
-    </div>
-    
-    <p class="hero-role">// Data Analyst · Full-Stack Developer</p>
-    
-    <p class="hero-bio">
-      I am a Computer Science undergraduate with strong skills in data analytics, machine learning, and full-stack development. Experienced with Python, SQL, Power BI, and data visualization tools to analyze data and build meaningful insights. I have developed AI-based systems, computer vision applications, and real-time full-stack web applications. I enjoy transforming raw data into actionable insights and building scalable applications that solve real-world problems. Passionate about continuous learning, problem-solving, and applying data-driven approaches to build impactful technology solutions.
-    </p>
-    
-    <div class="skill-chips">
-      <span class="chip">Python</span>
-      <span class="chip">SQL</span>
-      <span class="chip">Java</span>
-      <span class="chip">Pandas</span>
-      <span class="chip">Scikit-Learn</span>
-      <span class="chip">Power BI</span>
-      <span class="chip">OpenCV</span>
-      <span class="chip">NLP</span>
-      <span class="chip">Streamlit</span>
-      <span class="chip">Socket.IO</span>
-    </div>
-    
-    <div class="hero-cta">
-      <a href="#" data-page="projects" class="btn-primary">View Projects</a>
-      <a href="#" data-page="education" class="btn-outline">My Journey</a>
-    </div>
-  </div>
-</section>
+  <!-- MAIN SPA VIEWPORT CONTENT AREA -->
+  <main class="main-content" id="mainContent">
 
-<!-- EDUCATION -->
-<section id="education" class="page-section">
-  <div class="sec-header reveal">
-    <p class="sec-eyebrow">&#127891; My Background</p>
-    <h2 class="sec-title">Academic <span>Journey</span></h2>
-    <div class="sec-line"></div>
-  </div>
+    <!-- ████████████  HERO SECTION (3D ORBITAL TECHNOLOGY SYSTEM)  ████████████ -->
+    <section id="home" class="hero-section">
+    <div class="hero-grid-container">
 
-  <div class="timeline">
-    <!-- B.Tech -->
-    <div class="tl-item reveal">
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <span class="tl-year">2022 &#8211; 2026</span>
-        <div class="tl-card">
-          <div class="tl-card__top">
-            <span class="tl-emoji">&#127979;</span>
-            <span class="tl-tag tl-tag--accent">&#11088; Current</span>
+      <!-- LEFT COLUMN CONTENT -->
+      <div class="hero-left-content">
+
+        <!-- Heading -->
+        <h1 class="hero-heading hero-anim-2">
+          Hi, I'm <span class="hero-name-gradient">Jaswanth</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <h2 class="hero-subtitle hero-anim-3">
+          Python Full Stack Developer<br>&amp; Data Analyst
+        </h2>
+
+        <!-- Description -->
+        <p class="hero-description hero-anim-4">
+          I build web applications, work with data,<br>
+          and turn ideas into real-world solutions.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group hero-anim-5">
+          <a href="#projects" class="btn-primary-glow">
+            <span>View My Work</span>
+            <span class="btn-arrow-icon">→</span>
+          </a>
+          <a href="resume.pdf" target="_blank" download="Penjuru_Venkata_Jaswanth_Resume.pdf" class="btn-glass-border">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="hero-social-links hero-anim-6">
+          <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank" rel="noopener"
+            class="social-glass-btn" title="GitHub">
+            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/penjuru-venkata-jaswanth" target="_blank" rel="noopener"
+            class="social-glass-btn" title="LinkedIn">
+            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.239-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </a>
+          <a href="mailto:penjuruvenkatajaswanth@gmail.com" class="social-glass-btn" title="Email">
+            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Quick Stats Bar -->
+        <div class="hero-stats-bar hero-anim-7">
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Projects</span>
           </div>
-          <h3>&#127891; B.Tech in Computer Science &amp; Engineering</h3>
-          <p class="tl-inst">&#127963;&#65039; Alliance University, Bangalore</p>
-          <div class="tl-meta">
-            <span class="tl-badge tl-badge--accent">&#127942; CGPA: 8.4</span>
-            <span class="tl-badge tl-badge--accent">&#128197; Graduation: 2026</span>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Internship</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">8.5</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: FLOATING TECH TILES HERO -->
+      <div class="hero-scene-container" id="heroOrbitalSection">
+
+        <!-- Orbital glow rings background -->
+        <div class="scene-orbit-glow"></div>
+        <div class="scene-orbit-ring ring-a"></div>
+        <div class="scene-orbit-ring ring-b"></div>
+        <div class="scene-orbit-ring ring-c"></div>
+
+        <!-- Character portrait (Decoupled Position & Scale Architecture) -->
+        <div class="character-pos-wrapper" id="centralAvatarFrame">
+          <div class="character-scale-wrapper">
+            <img src="images/developer_nobg.png" alt="Jashu – Python Full Stack Developer & Data Analyst" class="scene-character-img"
+              id="characterImg">
+            <!-- Developer watermark -->
+            <div class="dev-watermark">Developer</div>
+          </div>
+        </div>
+
+        <!-- Orbiting Tech Badges (JS-driven elliptical orbits) -->
+        <div class="orbiting-nodes-layer" id="orbitingNodesLayer">
+
+          <!-- Orbit 1 (Inner): Git, React, SQL -->
+          <div class="orbit-node" data-orbit="1" data-speed="0.009" data-angle="0.0">
+            <div class="node-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="2.1" fill="#61DAFB" />
+                <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61DAFB" stroke-width="1.3" fill="none" />
+                <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61DAFB" stroke-width="1.3" fill="none"
+                  transform="rotate(60 12 12)" />
+                <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61DAFB" stroke-width="1.3" fill="none"
+                  transform="rotate(120 12 12)" />
+              </svg>
+              <span class="badge-label">React</span>
+            </div>
+          </div>
+
+          <div class="orbit-node node-highlight" data-orbit="1" data-speed="0.009" data-angle="2.09">
+            <div class="node-badge badge-glow-blue">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                <ellipse cx="12" cy="5.5" rx="8" ry="2.6" fill="#3b82f6" opacity="0.9" />
+                <path d="M4 5.5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6V5.5" stroke="#3b82f6" stroke-width="1.3"
+                  fill="none" />
+                <path d="M4 9.5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6V9.5" stroke="#3b82f6" stroke-width="1.3"
+                  fill="none" />
+                <path d="M4 13.5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6V13.5" stroke="#3b82f6" stroke-width="1.3"
+                  fill="none" />
+              </svg>
+              <span class="badge-label">SQL</span>
+            </div>
+          </div>
+
+          <div class="orbit-node" data-orbit="1" data-speed="0.009" data-angle="4.18">
+            <div class="node-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path
+                  d="M2.6 10.59L11.41 1.78a1.5 1.5 0 0 1 2.12 0l8.69 8.69a1.5 1.5 0 0 1 0 2.12l-8.69 8.7a1.5 1.5 0 0 1-2.12 0L2.6 12.71a1.5 1.5 0 0 1 0-2.12zM10.5 16.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm3.5-3.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-3.5-3.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                  fill="#F05032" />
+              </svg>
+              <span class="badge-label">Git</span>
+            </div>
+          </div>
+
+          <!-- Orbit 2 (Middle): Python, AWS, JavaScript -->
+          <div class="orbit-node node-highlight" data-orbit="2" data-speed="0.0065" data-angle="1.05">
+            <div class="node-badge badge-glow-blue">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path
+                  d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.89S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.031V15.01s-.109-3.402 3.35-3.402h5.766s3.24.052 3.24-3.13V3.13S18.28 0 11.914 0zm-3.2 1.814a1.051 1.051 0 1 1 0 2.102 1.051 1.051 0 0 1 0-2.102z"
+                  fill="#4B8BBE" />
+                <path
+                  d="M12.086 24c6.096 0 5.716-2.656 5.716-2.656l-.007-2.752h-5.814v-.826h8.131S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963H18.566v2.922s.109 3.402-3.35 3.402H9.45s-3.24-.052-3.24 3.13V20.87S5.72 24 12.086 24zm3.2-1.814a1.051 1.051 0 1 1 0-2.102 1.051 1.051 0 0 1 0 2.102z"
+                  fill="#FFD43B" />
+              </svg>
+              <span class="badge-label">Python</span>
+            </div>
+          </div>
+
+          <div class="orbit-node" data-orbit="2" data-speed="0.0065" data-angle="3.14">
+            <div class="node-badge badge-glow-orange">
+              <svg viewBox="0 0 80 30" width="28" height="11" fill="none">
+                <text x="0" y="22" font-family="Arial Black,sans-serif" font-size="20" font-weight="900"
+                  fill="#FF9900">aws</text>
+              </svg>
+              <span class="badge-label">AWS</span>
+            </div>
+          </div>
+
+          <div class="orbit-node" data-orbit="2" data-speed="0.0065" data-angle="5.23">
+            <div class="node-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <rect width="24" height="24" rx="3" fill="#F7DF1E" />
+                <path
+                  d="M13 18.5c.6.3 1.3.6 2.1.6 1.1 0 1.8-.5 1.8-1.4 0-.9-.8-1.3-2.1-1.8-1.9-.8-3.1-1.7-3.1-3.6 0-2 1.6-3.5 4.1-3.5 1.2 0 2.3.3 3 .8l-.9 2c-.5-.3-1.3-.6-2.1-.6-1 0-1.5.5-1.5 1.1 0 .8.8 1.2 2.2 1.9 2 .8 3 1.8 3 3.7 0 2.3-1.8 3.6-4.5 3.6-1.5 0-2.8-.4-3.6-1l1.6-2.8zM6 18.6c.7.4 1.5.7 2.2.7.8 0 1.3-.4 1.3-1.2V9h2.8v9.2c0 2.6-1.6 3.9-4.1 3.9-1.4 0-2.7-.4-3.4-.9l1.2-2.6z"
+                  fill="#000" />
+              </svg>
+              <span class="badge-label">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Orbit 3 (Outer): Data Analytics, Docker -->
+          <div class="orbit-node node-highlight" data-orbit="3" data-speed="0.0045" data-angle="0.5">
+            <div class="node-badge badge-glow-green">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                <rect x="2" y="14" width="4" height="8" rx="1" fill="#34d399" />
+                <rect x="8" y="9" width="4" height="13" rx="1" fill="#34d399" />
+                <rect x="14" y="5" width="4" height="17" rx="1" fill="#34d399" />
+                <polyline points="4 14 10 9 16 5" stroke="#34d399" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+              <span class="badge-label">Data Analytics</span>
+            </div>
+          </div>
+
+          <div class="orbit-node" data-orbit="3" data-speed="0.0045" data-angle="3.64">
+            <div class="node-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                <rect x="1" y="8.5" width="3.2" height="2.8" rx="0.4" stroke="#2496ED" stroke-width="1.1" />
+                <rect x="5.2" y="8.5" width="3.2" height="2.8" rx="0.4" stroke="#2496ED" stroke-width="1.1" />
+                <rect x="9.4" y="8.5" width="3.2" height="2.8" rx="0.4" stroke="#2496ED" stroke-width="1.1" />
+                <rect x="5.2" y="4.5" width="3.2" height="2.8" rx="0.4" stroke="#2496ED" stroke-width="1.1" />
+                <rect x="9.4" y="4.5" width="3.2" height="2.8" rx="0.4" stroke="#2496ED" stroke-width="1.1" />
+                <path d="M19.5 10c-.9-1.4-2.6-1.4-3.7-.9-.4-1.9-1.7-2.8-3.2-2" stroke="#2496ED" stroke-width="1"
+                  fill="none" stroke-linecap="round" />
+                <path d="M1 15.5c1.1 2.3 3.7 3.2 6 3.2h7.4c3.2 0 5-1.8 5-4.2" stroke="#2496ED" stroke-width="1.1"
+                  fill="none" stroke-linecap="round" />
+              </svg>
+              <span class="badge-label">Docker</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">✨ Get To Know Me</p>
+        <h2 class="sec-title">About <span>Jaswanth</span></h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-card-glass reveal">
+          <div class="about-icon-badge">👨‍💻</div>
+          <h3>Full Stack &amp; Data Enthusiast</h3>
+          <p>
+            I am a Computer Science undergraduate at <strong>Alliance University, Bangalore</strong> with a deep passion
+            for building high-impact software solutions. I specialize in bridging robust <strong>Python Full-Stack
+              engineering</strong>, modern <strong>React frontend architectures</strong>, and intelligent <strong>Data
+              Analytics</strong>.
+          </p>
+          <p style="margin-top:1rem;">
+            Whether building AI-driven NLP engines, real-time full-stack apps with Socket.IO, or interactive Power BI
+            dashboards — I strive for Apple-level polish and scalable code.
+          </p>
+          <div class="about-quick-stats">
+            <div class="stat-pill"><span class="stat-num">8.5</span><span class="stat-label">B.Tech CGPA</span></div>
+            <div class="stat-pill"><span class="stat-num">96.1%</span><span class="stat-label">12th Grade</span></div>
+            <div class="stat-pill"><span class="stat-num">7+</span><span class="stat-label">Projects</span></div>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="resume.pdf" target="_blank" download="Penjuru_Venkata_Jaswanth_Resume.pdf" class="btn-primary-glow" style="display: inline-flex; width: 100%; justify-content: center; text-decoration: none;">
+              <span>📄 Download Official Resume (PDF)</span>
+            </a>
+          </div>
+        </div>
+        <div class="timeline-container reveal">
+          <h3 class="timeline-heading">Academic Journey</h3>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-card-glass">
+                <div class="tl-top"><span class="tl-year">2022 – 2026</span><span class="tl-tag accent-purple">⭐
+                    Current</span></div>
+                <h4>B.Tech in Computer Science &amp; Engineering</h4>
+                <p class="tl-inst">Alliance University, Bangalore</p>
+                <div class="tl-meta"><span class="tl-badge">CGPA: 8.5</span><span class="tl-badge">2026</span></div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot dot-gold"></div>
+              <div class="tl-card-glass">
+                <div class="tl-top"><span class="tl-year">2020 – 2022</span><span class="tl-tag accent-gold">🔥
+                    96.1%</span></div>
+                <h4>12th Grade (Intermediate)</h4>
+                <p class="tl-inst">Abhyas Junior College | Proddatur</p>
+                <div class="tl-meta"><span class="tl-badge">96.1%</span><span class="tl-badge">BIEAP</span></div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot dot-cyan"></div>
+              <div class="tl-card-glass">
+                <div class="tl-top"><span class="tl-year">2020</span><span class="tl-tag accent-cyan">🌱
+                    Foundation</span></div>
+                <h4>10th Grade (SSC)</h4>
+                <p class="tl-inst">Queen Mary's School | Proddatur</p>
+                <div class="tl-meta"><span class="tl-badge">66%</span><span class="tl-badge">SSC</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
     </div>
+  </section>
 
-    <!-- 12th -->
-    <div class="tl-item reveal">
-      <div class="tl-dot tl-dot--gold"></div>
-      <div class="tl-content">
-        <span class="tl-year">2020 &#8211; 2022</span>
-        <div class="tl-card">
-          <div class="tl-card__top">
-            <span class="tl-emoji">&#128218;</span>
-            <span class="tl-tag tl-tag--gold">&#128293; 96.1%</span>
+  <!-- SKILLS -->
+  <section id="skills" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">🛠️ Tech Stack &amp; Abilities</p>
+        <h2 class="sec-title">Technical <span>Skills</span></h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="skills-categories-grid">
+        <div class="skills-card-glass reveal">
+          <div class="skills-card-header"><span class="skills-cat-icon">🐍</span>
+            <h3>Languages &amp; Core</h3>
           </div>
-          <h3>&#128214; 12th Grade (Intermediate)</h3>
-          <p class="tl-inst">&#127963;&#65039; Abhyas Junior College | Kadapa, Proddatur</p>
-          <div class="tl-meta">
-            <span class="tl-badge tl-badge--gold">&#128200; 96.1%</span>
-            <span class="tl-badge tl-badge--gold">&#128203; BIEAP Board</span>
-            <span class="tl-badge tl-badge--gold">&#128197; 2022</span>
+          <div class="skills-chip-list">
+            <span class="skill-tag"><span class="tag-icon">🐍</span> Python</span>
+            <span class="skill-tag"><span class="tag-icon">⚡</span> JavaScript</span>
+            <span class="skill-tag"><span class="tag-icon">🗄️</span> SQL</span>
+            <span class="skill-tag"><span class="tag-icon">🌐</span> HTML5 &amp; CSS3</span>
+          </div>
+        </div>
+        <div class="skills-card-glass reveal">
+          <div class="skills-card-header"><span class="skills-cat-icon">⚛️</span>
+            <h3>Full-Stack Web</h3>
+          </div>
+          <div class="skills-chip-list">
+            <span class="skill-tag"><span class="tag-icon">⚛️</span> React.js</span>
+            <span class="skill-tag"><span class="tag-icon">🟢</span> Node.js</span>
+            <span class="skill-tag"><span class="tag-icon">🚂</span> Express.js</span>
+            <span class="skill-tag"><span class="tag-icon">🍃</span> MongoDB</span>
+            <span class="skill-tag"><span class="tag-icon">💬</span> Socket.IO</span>
+            <span class="skill-tag"><span class="tag-icon">🔑</span> JWT Auth</span>
+          </div>
+        </div>
+        <div class="skills-card-glass reveal">
+          <div class="skills-card-header"><span class="skills-cat-icon">🤖</span>
+            <h3>AI, ML &amp; Vision</h3>
+          </div>
+          <div class="skills-chip-list">
+            <span class="skill-tag"><span class="tag-icon">📖</span> NLP &amp; spaCy</span>
+            <span class="skill-tag"><span class="tag-icon">👁️</span> OpenCV</span>
+            <span class="skill-tag"><span class="tag-icon">🤖</span> Scikit-learn</span>
+            <span class="skill-tag"><span class="tag-icon">🔍</span> Google Cloud Vision</span>
+            <span class="skill-tag"><span class="tag-icon">🎈</span> Streamlit</span>
+          </div>
+        </div>
+        <div class="skills-card-glass reveal">
+          <div class="skills-card-header"><span class="skills-cat-icon">📊</span>
+            <h3>Analytics &amp; DevOps</h3>
+          </div>
+          <div class="skills-chip-list">
+            <span class="skill-tag"><span class="tag-icon">📊</span> Power BI &amp; DAX</span>
+            <span class="skill-tag"><span class="tag-icon">☁️</span> AWS</span>
+            <span class="skill-tag"><span class="tag-icon">🐳</span> Docker</span>
+            <span class="skill-tag"><span class="tag-icon">🌿</span> Git &amp; GitHub</span>
           </div>
         </div>
       </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
     </div>
+  </section>
 
-    <!-- 10th -->
-    <div class="tl-item reveal">
-      <div class="tl-dot tl-dot--green"></div>
-      <div class="tl-content">
-        <span class="tl-year">2020</span>
-        <div class="tl-card">
-          <div class="tl-card__top">
-            <span class="tl-emoji">&#9997;&#65039;</span>
-            <span class="tl-tag tl-tag--green">&#127793; Foundation</span>
+  <!-- PROJECTS -->
+  <section id="projects" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">🚀 Showcase</p>
+        <h2 class="sec-title">Featured <span>Projects</span></h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="project-filters reveal">
+        <button class="filter-btn active" data-filter="all"><span class="filter-icon">✨</span> All Projects <span
+            class="filter-count">7</span></button>
+        <button class="filter-btn" data-filter="ai"><span class="filter-icon">🤖</span> AI &amp; ML <span
+            class="filter-count">4</span></button>
+        <button class="filter-btn" data-filter="fullstack"><span class="filter-icon">💻</span> Full-Stack <span
+            class="filter-count">2</span></button>
+        <button class="filter-btn" data-filter="data"><span class="filter-icon">📊</span> Data Analytics <span
+            class="filter-count">1</span></button>
+      </div>
+      <div class="projects-grid">
+        <div class="proj-card-glass reveal" data-category="ai">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-faq"></div><span class="proj-cat-badge badge-ai">🤖 AI &amp;
+              NLP</span><span class="proj-number">01</span>
           </div>
-          <h3>&#128221; 10th Grade (SSC)</h3>
-          <p class="tl-inst">&#127963;&#65039; Queen Mary&#39;s School | Proddatur</p>
-          <div class="tl-meta">
-            <span class="tl-badge tl-badge--green">&#128200; 66%</span>
-            <span class="tl-badge tl-badge--green">&#128203; SSC Board</span>
-            <span class="tl-badge tl-badge--green">&#128197; 2020</span>
+          <div class="proj-card-body">
+            <h3 class="proj-title">Automated FAQ Generator</h3>
+            <p class="proj-desc">Automated FAQ generator from policy documents using NLP. Text preprocessing, entity
+              recognition, and intelligent Q&amp;A pair extraction with an intuitive Streamlit interface.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">Python</span><span class="tech-chip">spaCy
+                NLP</span><span class="tech-chip">Streamlit</span><span class="tech-chip">Regex</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Automated-FAQ-Generator-From-Policy-or-Instruction-Documents"
+                target="_blank" class="proj-btn btn-github"><svg viewBox="0 0 24 24" width="14" height="14"
+                  fill="currentColor">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg> Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Automated-FAQ-Generator-From-Policy-or-Instruction-Documents"
+                target="_blank" class="proj-btn btn-demo">Live Demo ↗</a>
+            </div>
           </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="ai">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-resume"></div><span class="proj-cat-badge badge-ai">🤖 AI &amp;
+              ML</span><span class="proj-number">02</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">AI Resume Screening System</h3>
+            <p class="proj-desc">Intelligent resume screening system to automatically evaluate candidate profiles
+              against job descriptions with real-time analysis using spaCy NLP and Scikit-learn.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">Python</span><span
+                class="tech-chip">Streamlit</span><span class="tech-chip">spaCy</span><span
+                class="tech-chip">Scikit-learn</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/AI-Resume-Screening-System" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/AI-Resume-Screening-System" target="_blank"
+                class="proj-btn btn-demo">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="ai">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-vision"></div><span class="proj-cat-badge badge-ai">🔍 Vision
+              AI</span><span class="proj-number">03</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">E-commerce Grocery Vision OCR</h3>
+            <p class="proj-desc">Web app using Google Cloud Vision API to detect and parse handwritten grocery lists.
+              Multi-language handwriting recognition, camera capture, and confidence scoring.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">JavaScript</span><span class="tech-chip">Google Cloud
+                Vision</span><span class="tech-chip">OCR</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Grocery-Calculator" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Grocery-Calculator" target="_blank"
+                class="proj-btn btn-demo">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="data">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-road"></div><span class="proj-cat-badge badge-data">📊 Data &amp;
+              BI</span><span class="proj-number">04</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">Power BI Road Accidents Dashboard</h3>
+            <p class="proj-desc">Interactive Power BI dashboard analysing road accident data. DAX KPI metrics, dynamic
+              slicers, vehicle type filters, and geo-visualisations for safety insights.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">Power BI</span><span class="tech-chip">DAX</span><span
+                class="tech-chip">Data Analysis</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank" class="proj-btn btn-demo">View
+                Dashboard ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="fullstack">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-quiz"></div><span class="proj-cat-badge badge-fullstack">💻 Full-Stack +
+              AI</span><span class="proj-number">05</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">QuizAI – AI Quiz Platform</h3>
+            <p class="proj-desc">Full-stack quiz platform powered by OpenRouter AI. Automated quiz generation, score
+              tracking, dynamic leaderboards, email OTP, and JWT authentication.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">React</span><span class="tech-chip">Node.js</span><span
+                class="tech-chip">MongoDB</span><span class="tech-chip">OpenRouter API</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/online-quiz-ai" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/online-quiz-ai" target="_blank"
+                class="proj-btn btn-demo">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="ai">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-gesture"></div><span class="proj-cat-badge badge-ai">👁️ Computer
+              Vision</span><span class="proj-number">06</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">Gesture Control System</h3>
+            <p class="proj-desc">Real-time hand gesture control system using OpenCV and deep learning. Controls
+              applications and volume through intuitive touchless hand gesture movements.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">Python</span><span class="tech-chip">OpenCV</span><span
+                class="tech-chip">MediaPipe</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Gesture-Control" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004/Gesture-Control" target="_blank"
+                class="proj-btn btn-demo">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-glass reveal" data-category="fullstack">
+          <div class="proj-card-banner">
+            <div class="proj-banner-bg banner-chat"></div><span class="proj-cat-badge badge-fullstack">💬
+              Full-Stack</span><span class="proj-number">07</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-title">Real-Time Chat Application</h3>
+            <p class="proj-desc">Full-stack real-time messaging platform with email OTP verification and JWT
+              authentication. Instant WebSocket messaging via Socket.IO and scalable architecture.</p>
+            <div class="proj-tech-tags"><span class="tech-chip">Socket.IO</span><span
+                class="tech-chip">Node.js</span><span class="tech-chip">JWT</span></div>
+            <div class="proj-card-actions">
+              <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank"
+                class="proj-btn btn-github">Code</a>
+              <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank" class="proj-btn btn-demo">Live
+                Demo ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & CERTIFICATIONS -->
+  <section id="experience" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">🏆 Training &amp; Achievements</p>
+        <h2 class="sec-title">Experience &amp; <span>Achievements</span></h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="exp-cards-grid">
+        <div class="exp-card-glass reveal">
+          <div class="exp-header"><span class="exp-icon">🛒</span>
+            <div>
+              <h3>Flipkart Grid 6.0</h3><span class="exp-sub">Software Development Track · August 2024</span>
+            </div>
+          </div>
+          <p>Participated in national-level software hackathon by Flipkart, designing scalable backend logic and
+            algorithmic problem solving under pressure.</p>
+        </div>
+        <div class="exp-card-glass reveal">
+          <div class="exp-header"><span class="exp-icon">🤖</span>
+            <div>
+              <h3>Machine Learning Virtual Internship</h3><span class="exp-sub">Intrainz · August 2024</span>
+            </div>
+          </div>
+          <p>Completed intensive ML internship covering algorithms, feature extraction, model evaluation, and deployment
+            using Python and Scikit-learn.</p>
+        </div>
+      </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS / CREDENTIALS SECTION -->
+  <section id="certifications" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">🏅 Verified Credentials</p>
+        <h2 class="sec-title">Certifications &amp; <span>Credentials</span></h2>
+        <div class="sec-badge-pill">3 Verified Credentials</div>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="certs-grid">
+
+        <!-- CERTIFICATE 1: MICROSOFT -->
+        <div class="cert-card-glass reveal">
+          <div class="cert-card-img-wrap" data-cert-img="images/microsoft_sql_ai_cert.png" data-cert-title="Microsoft Certified: SQL AI Developer Associate" data-cert-meta="Microsoft · Sep 23, 2026 – Sep 24, 2027">
+            <img src="images/microsoft_sql_ai_cert.png" alt="Microsoft Certified: SQL AI Developer Associate Certificate" class="cert-card-img">
+            <div class="cert-img-overlay">
+              <span>🔍 Click to View Certificate</span>
+            </div>
+          </div>
+          <div class="cert-card-content">
+            <div class="cert-badge-header">
+              <span class="cert-provider-badge ms-badge">Microsoft</span>
+              <span class="cert-status-pill">✓ Verified / Online Verifiable</span>
+            </div>
+            <h3 class="cert-card-title">Microsoft Certified: SQL AI Developer Associate</h3>
+            <div class="cert-meta-details">
+              <div class="cert-meta-row"><strong>Issuer:</strong> Microsoft</div>
+              <div class="cert-meta-row"><strong>Earned:</strong> September 23, 2026</div>
+              <div class="cert-meta-row"><strong>Expires:</strong> September 24, 2027</div>
+              <div class="cert-meta-row"><strong>Credential ID:</strong> FD3E7752CBEA91C5</div>
+              <div class="cert-meta-row"><strong>Certification No:</strong> 607050-90E0C5</div>
+            </div>
+            <button class="cert-view-btn" data-cert-img="images/microsoft_sql_ai_cert.png" data-cert-title="Microsoft Certified: SQL AI Developer Associate" data-cert-meta="Microsoft · Sep 23, 2026 – Sep 24, 2027">
+              <span>View Certificate</span> ↗
+            </button>
+          </div>
+        </div>
+
+        <!-- CERTIFICATE 2: ORACLE CERTIFIED PROFESSIONAL -->
+        <div class="cert-card-glass reveal">
+          <div class="cert-card-img-wrap" data-cert-img="images/eCertificate.pdf_0_0.jpg" data-cert-title="Oracle Certified Professional" data-cert-meta="Oracle University · Certificate of Recognition">
+            <img src="images/eCertificate.pdf_0_0.jpg" alt="Oracle Certified Professional Certificate" class="cert-card-img">
+            <div class="cert-img-overlay">
+              <span>🔍 Click to View Certificate</span>
+            </div>
+          </div>
+          <div class="cert-card-content">
+            <div class="cert-badge-header">
+              <span class="cert-provider-badge oracle-badge">Oracle</span>
+              <span class="cert-status-pill">✓ Verified Professional</span>
+            </div>
+            <h3 class="cert-card-title">Oracle Certified Professional</h3>
+            <div class="cert-meta-details">
+              <div class="cert-meta-row"><strong>Issuer:</strong> Oracle University / Oracle Corp</div>
+              <div class="cert-meta-row"><strong>Credential Type:</strong> Certificate of Recognition</div>
+              <div class="cert-meta-row"><strong>Recipient:</strong> Penjuru Venkata Jaswanth</div>
+              <div class="cert-meta-row"><strong>Signatory:</strong> Damien Carey (SVP, Oracle University)</div>
+            </div>
+            <button class="cert-view-btn" data-cert-img="images/eCertificate.pdf_0_0.jpg" data-cert-title="Oracle Certified Professional" data-cert-meta="Oracle University · Certificate of Recognition">
+              <span>View Certificate</span> ↗
+            </button>
+          </div>
+        </div>
+
+        <!-- CERTIFICATE 3: TQCEBT'26 IEEE -->
+        <div class="cert-card-glass reveal">
+          <div class="cert-card-img-wrap" data-cert-img="images/tqcebt_26_cert.png" data-cert-title="Certificate of Presentation — TQCEBT'26" data-cert-meta="IEEE / CHRIST University · April 9–11, 2026">
+            <img src="images/tqcebt_26_cert.png" alt="Certificate of Presentation TQCEBT'26" class="cert-card-img">
+            <div class="cert-img-overlay">
+              <span>🔍 Click to View Certificate</span>
+            </div>
+          </div>
+          <div class="cert-card-content">
+            <div class="cert-badge-header">
+              <span class="cert-provider-badge ieee-badge">IEEE / CHRIST Univ</span>
+              <span class="cert-status-pill">✓ Presented</span>
+            </div>
+            <h3 class="cert-card-title">Certificate of Presentation — TQCEBT'26</h3>
+            <p class="cert-paper-title"><strong>Presented Paper:</strong> AI-Based Resume Screening for Efficient Recruitment Using NLP and Machine Learning</p>
+            <div class="cert-meta-details">
+              <div class="cert-meta-row"><strong>Conference:</strong> TQCEBT'26 (IEEE Pune &amp; TEMS)</div>
+              <div class="cert-meta-row"><strong>Date:</strong> April 9–11, 2026</div>
+              <div class="cert-meta-row"><strong>Organized by:</strong> CHRIST University, Pune Lavasa</div>
+              <div class="cert-meta-row"><strong>Recipient:</strong> P V Jaswanth</div>
+            </div>
+            <button class="cert-view-btn" data-cert-img="images/tqcebt_26_cert.png" data-cert-title="Certificate of Presentation — TQCEBT'26" data-cert-meta="IEEE / CHRIST University · April 9–11, 2026">
+              <span>View Certificate</span> ↗
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="page-section">
+    <div class="section-container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">📫 Let's Connect</p>
+        <h2 class="sec-title">Get In <span>Touch</span></h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="contact-card-glass reveal">
+        <div class="contact-intro">
+          <h3>Let's build something amazing together!</h3>
+          <p>Open to full-time roles, internships, and collaborative software projects.</p>
+        </div>
+        <div class="contact-methods-grid">
+          <a href="mailto:penjuruvenkatajaswanth@gmail.com" class="contact-method-item"><span class="cm-icon">📧</span>
+            <div class="cm-details"><span class="cm-label">Email</span><span
+                class="cm-val">penjuruvenkatajaswanth@gmail.com</span></div>
+          </a>
+          <a href="https://www.linkedin.com/in/penjuru-venkata-jaswanth" target="_blank"
+            class="contact-method-item"><span class="cm-icon">💼</span>
+            <div class="cm-details"><span class="cm-label">LinkedIn</span><span
+                class="cm-val">in/penjuru-venkata-jaswanth</span></div>
+          </a>
+          <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank" class="contact-method-item"><span
+              class="cm-icon">🐙</span>
+            <div class="cm-details"><span class="cm-label">GitHub</span><span
+                class="cm-val">penjuruvenkatajaswanth-2004</span></div>
+          </a>
+          <a href="tel:+919030760656" class="contact-method-item"><span class="cm-icon">📞</span>
+            <div class="cm-details"><span class="cm-label">Phone</span><span class="cm-val">+91 9030760656</span></div>
+          </a>
+        </div>
+      </div>
+      <!-- SITE FOOTER -->
+      <footer class="site-section-footer">
+        <div class="footer-content">
+          <p class="footer-logo">Jashu.</p>
+          <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth (Jashu) · Engineered with precision &amp; passion</p>
+        </div>
+      </footer>
+    </div>
+  </section>
+  </main>
+
+  <!-- FLOATING CONTACT -->
+  <div id="float-contact">
+    <button id="float-toggle" aria-label="Contact Quick Menu">✉</button>
+    <div id="float-menu">
+      <a class="float-item" href="resume.pdf" target="_blank" download="Penjuru_Venkata_Jaswanth_Resume.pdf"><span class="fi-icon">📄</span> Resume PDF</a>
+      <a class="float-item" href="mailto:penjuruvenkatajaswanth@gmail.com"><span class="fi-icon">📧</span> Email Me</a>
+      <a class="float-item" href="https://www.linkedin.com/in/penjuru-venkata-jaswanth" target="_blank"><span
+          class="fi-icon">💼</span> LinkedIn</a>
+      <a class="float-item" href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank"><span
+          class="fi-icon">🐙</span> GitHub</a>
+      <a class="float-item" href="tel:+919030760656"><span class="fi-icon">📞</span> Call Me</a>
+    </div>
+  <!-- CERTIFICATE LIGHTBOX MODAL -->
+  <div id="certModal" class="cert-modal-overlay" aria-hidden="true">
+    <div class="cert-modal-container">
+      <button id="certModalClose" class="cert-modal-close" aria-label="Close modal">&times;</button>
+      <div class="cert-modal-body">
+        <img id="certModalImg" src="" alt="Certificate View" class="cert-modal-img">
+        <div class="cert-modal-info">
+          <h3 id="certModalTitle">Certificate Title</h3>
+          <p id="certModalMeta" class="cert-modal-meta">Issuer &amp; Date</p>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects" class="page-section">
-  <div class="sec-header reveal">
-    <p class="sec-eyebrow">My Work</p>
-    <h2 class="sec-title">Featured <span>Projects</span></h2>
-    <div class="sec-line"></div>
-  </div>
-
-  <div class="projects-grid">
-    <div class="proj-card reveal">
-      <span class="proj-num">01</span>
-      <div class="proj-icon">🤖</div>
-      <h3><a href="https://github.com/penjuruvenkatajaswanth-2004/Automated-FAQ-Generator-From-Policy-or-Instruction-Documents" target="_blank" class="proj-link">AI-based FAQ Generator</a></h3>
-      <p>Automated FAQ generator from policy documents using NLP. Performs text preprocessing, entity recognition, and intelligent Q&A pair extraction with user-friendly interface.</p>
-      <div class="tech-chips">
-        <span class="tech-chip">Python</span>
-        <span class="tech-chip">NLP</span>
-        <span class="tech-chip">Streamlit</span>
-        <span class="tech-chip">spaCy</span>
-      </div>
-    </div>
-
-    <div class="proj-card reveal">
-      <span class="proj-num">02</span>
-      <div class="proj-icon">&#9995;</div>
-      <h3><a href="https://github.com/penjuruvenkatajaswanth-2004/Gesture-Control" target="_blank" class="proj-link">Gesture Control System</a></h3>
-      <p>Real-time hand gesture control system using OpenCV and deep learning. Allows users to control devices and applications through intuitive hand movements, enabling touchless interaction and accessibility.</p>
-      <div class="tech-chips">
-        <span class="tech-chip">Python</span>
-        <span class="tech-chip">OpenCV</span>
-        <span class="tech-chip">Deep Learning</span>
-        <span class="tech-chip">Computer Vision</span>
-      </div>
-    </div>
-
-    <div class="proj-card reveal">
-      <span class="proj-num">03</span>
-      <div class="proj-icon">📋</div>
-      <h3><a href="https://github.com/penjuruvenkatajaswanth-2004/AI-Resume-Screening-System" target="_blank" class="proj-link">AI-Based Resume Screening</a></h3>
-      <p>Intelligent resume screening system to automatically evaluate candidate profiles against job descriptions. Built interactive Streamlit UI for real-time analysis with spaCy NLP.</p>
-      <div class="tech-chips">
-        <span class="tech-chip">Python</span>
-        <span class="tech-chip">Streamlit</span>
-        <span class="tech-chip">spaCy</span>
-        <span class="tech-chip">Scikit-learn</span>
-      </div>
-    </div>
-
-    <div class="proj-card reveal">
-      <span class="proj-num">04</span>
-      <div class="proj-icon">💬</div>
-      <h3>Chat Application System</h3>
-      <p>Full-stack real-time messaging platform with email-based OTP verification and JWT authentication. Features instant messaging via Socket.IO and scalable architecture.</p>
-      <div class="tech-chips">
-        <span class="tech-chip">Socket.IO</span>
-        <span class="tech-chip">JWT</span>
-        <span class="tech-chip">Node.js</span>
-        <span class="tech-chip">Full-Stack</span>
-      </div>
-    </div>
-
-    <div class="proj-card reveal">
-      <span class="proj-num">05</span>
-      <div class="proj-icon">📊</div>
-      <h3>Road Accident Dashboard</h3>
-      <p>Interactive Power BI dashboard analysing road accident data to uncover trends and hotspots. Designed KPI cards, dynamic slicers, and geo-visualisations for safety insights.</p>
-      <div class="tech-chips">
-        <span class="tech-chip">Power BI</span>
-        <span class="tech-chip">Data Analysis</span>
-        <span class="tech-chip">DAX</span>
-        <span class="tech-chip">Data Visualisation</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Certifications -->
-  <div class="sec-header reveal" style="margin-top:3rem">
-    <p class="sec-eyebrow">Achievements & Credentials</p>
-    <h2 class="sec-title">Certifications & <span>Recognition</span></h2>        
-    <div class="sec-line"></div>
-  </div>
-  <div class="certs-grid">
-    <div class="cert-card reveal">
-      <span class="cert-icon">🏅</span>
-      <div class="cert-info">
-        <h4>Compiler Design</h4>
-        <span>NPTEL · April 2025</span>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <span class="cert-icon">☁️</span>
-      <div class="cert-info">
-        <h4>Google Cloud Foundation</h4>
-        <span>Google · October 2024</span>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <span class="cert-icon">🛒</span>
-      <div class="cert-info">
-        <h4>Flipkart Grid 6.0</h4>
-        <span>Software Dev Track · August 2024</span>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <span class="cert-icon">🤖</span>
-      <div class="cert-info">
-        <h4>ML Virtual Internship</h4>
-        <span>Intrainz · August 2024</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FLOATING CONTACT BUTTON -->
-<div id="float-contact">
-  <button id="float-toggle" aria-label="Contact me">✉</button>
-  <div id="float-menu">
-    <a class="float-item" href="mailto:penjuruvenkatajaswanth@gmail.com">
-      <span class="fi-icon">📧</span> Email
-    </a>
-    <a class="float-item" href="https://www.linkedin.com/in/penjuru-venkata-jaswanth" target="_blank">
-      <span class="fi-icon">💼</span> LinkedIn
-    </a>
-    <a class="float-item" href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank">
-      <span class="fi-icon">🐙</span> GitHub
-    </a>
-    <a class="float-item" href="tel:+919030760656">
-      <span class="fi-icon">📞</span> +91 9030760656
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p class="footer-name">Penjuru Venkata Jaswanth</p>
-  <div class="footer-links">
-    <a href="mailto:penjuruvenkatajaswanth@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/penjuru-venkata-jaswanth" target="_blank">LinkedIn</a>
-    <a href="https://github.com/penjuruvenkatajaswanth-2004" target="_blank">GitHub</a>
-  </div>
-  <p class="footer-copy">© 2025 Penjuru Venkata Jaswanth · Built with passion & code</p>
-</footer>
-
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
